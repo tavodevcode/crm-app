@@ -1,0 +1,135 @@
+<form [formGroup]="userForm" class="w-1/2 mt-14">
+  <div class="mb-6">
+    <label
+      for="firstName"
+      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+      >Nombre</label
+    >
+    <input
+      type="text"
+      id="firstName"
+      formControlName="firstName"
+      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+    />
+    @if (validateInput(firstName!)) {
+      @if (firstName!.errors?.["required"]) {
+        <span class="text-red-500">El nombre es requerido!</span>
+      } @else if (firstName!.errors?.["minlength"]) {
+        <span class="text-red-500">Se necesitan minimo 3 caracteres</span>
+      } @else if (firstName!.errors?.["maxlength"]) {
+        <span class="text-red-500">Se necesitan minimo 15 caracteres!</span>
+      }
+    }
+  </div>
+
+  <div class="mb-6">
+    <label
+      for="lastName"
+      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+      >Apellidos</label
+    >
+    <input
+      type="text"
+      id="lastName"
+      formControlName="lastName"
+      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+    />
+    @if (validateInput(lastName!)) {
+      @if (lastName!.errors?.["required"]) {
+        <span class="text-red-500">Los apellidos son requeridos!</span>
+      } @else if (lastName!.errors?.["minlength"]) {
+        <span class="text-red-500">Se necesitan minimo 3 caracteres</span>
+      } @else if (lastName!.errors?.["maxlength"]) {
+        <span class="text-red-500"
+          >El campo requiere un maximo de 15 caracteres</span
+        >
+      }
+    }
+  </div>
+
+  <div class="mb-6">
+    <label
+      for="email"
+      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+      >Correo electronico</label
+    >
+    <input
+      type="text"
+      id="email"
+      formControlName="email"
+      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+    />
+    @if (validateInput(email!)) {
+      @if (email!.errors?.["required"]) {
+        <span class="text-red-500">El correo es requerido!</span>
+      } @else if (email!.errors?.["email"]) {
+        <span class="text-red-500">El correo no es valido</span>
+      }
+    }
+  </div>
+
+  <div class="mb-6">
+    <label
+      for="phone"
+      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+      >Telefono</label
+    >
+    <input
+      type="text"
+      id="phone"
+      formControlName="phone"
+      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+    />
+    @if (validateInput(phone!)) {
+      @if (phone!.errors?.["required"]) {
+        <span class="text-red-500">El telefono es requerido!</span>
+      } @else if (phone!.errors?.["minlength"]) {
+        <span class="text-red-500">Se necesitan minimo 3 caracteres</span>
+      } @else if (phone!.errors?.["maxlength"]) {
+        <span class="text-red-500"
+          >El campo requiere un maximo de 10 caracteres</span
+        >
+      }
+    }
+  </div>
+
+  <div class="mb-6">
+    <label
+      for="large-input"
+      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+      >Direccion</label
+    >
+    <input
+      type="text"
+      id="address"
+      formControlName="address"
+      class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+    />
+    @if (validateInput(address!)) {
+      @if (address!.errors?.["required"]) {
+        <span class="text-red-500">La direccion es requerida!</span>
+      } @else if (address!.errors?.["minlength"]) {
+        <span class="text-red-500">Se necesitan minimo 3 caracteres</span>
+      } @else if (address!.errors?.["maxlength"]) {
+        <span class="text-red-500"
+          >El campo requiere un maximo de 15 caracteres</span
+        >
+      }
+    }
+  </div>
+
+  <button
+    type="button"
+    (click)="handleCreateUser()"
+    class="text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 focus:outline-none dark:purple:ring-blue-800"
+  >
+    Crear usuario
+  </button>
+  <button
+    type="button"
+    (click)="handleResetForm()"
+    class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 focus:outline-none dark:green:ring-blue-800"
+  >
+    Limpiar
+  </button>
+</form>
