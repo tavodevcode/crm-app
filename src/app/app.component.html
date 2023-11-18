@@ -1,5 +1,15 @@
-<main class="w-full h-screen flex justify-center items-center">
-  <h1 class="text-3xl text-blue-700 font-bold">
-    Hello world! 🚀 🍕
-  </h1>
+<main>
+  <app-navigation></app-navigation>
+
+  <div class="p-[50px] h-screen sm:ml-[300px]">
+    <h1 class="text-7xl font-bold opacity-85">Dashboard</h1>
+
+    <!-- @if (isLoading) {
+      <p class="mt-10 text-3xl">Esta cargando...</p>
+    } @else {
+      <p class="mt-10 text-3xl">Hola</p>
+    } -->
+
+    <app-user-form />
+  </div>
 </main>
