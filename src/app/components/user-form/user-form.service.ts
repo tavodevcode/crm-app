@@ -14,11 +14,36 @@ export class UserFormService {
   constructor(private http: HttpClient) {}
 
   createUser(user: CreateUser) {
-    console.log({ user }) // eslint-disable-line no-console
+    return this.http.post(this.baseUrl, user, {
+      headers: {
+        apikey: API_KEY,
+        Authorization: `Bearer ${AUTHORIZATION}`,
+        'Content-Type': 'application/json',
+        Prefer: 'resolution=merge-duplicates'
+      }
+    })
   }
 
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.baseUrl, {
+      headers: {
+        apikey: API_KEY,
+        Authorization: `Bearer ${AUTHORIZATION}`
+      }
+    })
+  }
+
+  updateUser(user: User) {
+    return this.http.patch(`${this.baseUrl}?id=eq.${user.id}`, user, {
+      headers: {
+        apikey: API_KEY,
+        Authorization: `Bearer ${AUTHORIZATION}`
+      }
+    })
+  }
+
+  deleteUsers(id: number) {
+    return this.http.delete(`${this.baseUrl}?id=eq.${id}`, {
       headers: {
         apikey: API_KEY,
         Authorization: `Bearer ${AUTHORIZATION}`
