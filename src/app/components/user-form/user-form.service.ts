@@ -9,6 +9,7 @@ import { API_KEY, AUTHORIZATION } from '../../utils/constants'
   providedIn: 'root'
 })
 export class UserFormService {
+  //
   private baseUrl = 'https://gzvxjonltulcijxrfnln.supabase.co/rest/v1/users'
 
   constructor(private http: HttpClient) {}
